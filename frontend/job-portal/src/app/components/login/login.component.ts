@@ -2,8 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/models';
 
 @Component({
   selector: 'app-login',
@@ -138,7 +138,6 @@ import { AuthService } from '../../services/auth.service';
   `]
 })
 export class LoginComponent {
-  private api = inject(ApiService);
   private auth = inject(AuthService);
   private router = inject(Router);
 
@@ -154,14 +153,14 @@ export class LoginComponent {
   submitLogin() {
     if (!this.userName.trim()) return;
 
-    this.api.login(this.selectedRole(), this.userName).subscribe({
-      next: (user) => {
-        this.auth.setUser(user);
-        this.router.navigate(['/vacancies']);
-      },
-      error: (err) => {
-        console.error('Login failed:', err);
-      }
-    });
+    // Demo mode: create user locally without backend
+    const user: User = {
+      id: Math.floor(Math.random() * 1000) + 1,
+      username: this.userName.trim(),
+      role: this.selectedRole() as 'student' | 'company'
+    };
+
+    this.auth.setUser(user);
+    this.router.navigate(['/vacancies']);
   }
 }

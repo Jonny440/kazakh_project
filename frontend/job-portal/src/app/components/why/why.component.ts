@@ -225,8 +225,8 @@ import { CommonModule } from '@angular/common';
 })
 export class WhyComponent {
   diagrams = [
-    { title: 'Сауалнама нәтижесі', image: '/diagram1.png' },
-    { title: 'Статистика', image: '/diagram2.jpg' },
-    { title: 'Пікірлер', image: '/diagram3.png' }
+    { title: 'Сауалнама нәтижесі', image: 'diagram1.png' },
+    { title: 'Статистика', image: 'diagram2.jpg' },
+    { title: 'Пікірлер', image: 'diagram3.png' }
   ];
 }

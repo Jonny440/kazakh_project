@@ -122,10 +122,10 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutComponent {
   team = [
-    { name: 'Жанiбек', role: 'Бэкэнд', photo: '/project1.jpeg' },
-    { name: 'Ақжайнақ', role: 'Бағдарламалаушы', photo: '/project2.jpeg' },
-    { name: 'Ғалымжомарт', role: 'UI/UX Дизайнер', photo: '/project3.jpeg' },
-    { name: 'Айдана', role: 'Фронтэнд', photo: '/project4.jpeg' },
-    { name: 'Дәурен', role: 'Тестілеуші', photo: '/project5.jpeg' }
+    { name: 'Жанiбек', role: 'Бэкэнд', photo: 'project1.jpeg' },
+    { name: 'Ақжайнақ', role: 'Бағдарламалаушы', photo: 'project2.jpeg' },
+    { name: 'Ғалымжомарт', role: 'UI/UX Дизайнер', photo: 'project3.jpeg' },
+    { name: 'Айдана', role: 'Фронтэнд', photo: 'project4.jpeg' },
+    { name: 'Дәурен', role: 'Тестілеуші', photo: 'project5.jpeg' }
   ];
 }
