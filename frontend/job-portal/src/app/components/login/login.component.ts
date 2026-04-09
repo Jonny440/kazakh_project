@@ -2,8 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/models';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +34,7 @@ import { AuthService } from '../../services/auth.service';
           </button>
         </div>
 
-        @if (namePrompt) {
+        @if (namePrompt()) {
           <div class="name-input">
             <input
               type="text"
@@ -138,30 +138,27 @@ import { AuthService } from '../../services/auth.service';
   `]
 })
 export class LoginComponent {
-  private api = inject(ApiService);
   private auth = inject(AuthService);
   private router = inject(Router);
 
-  namePrompt = false;
+  namePrompt = signal(false);
   selectedRole = signal('');
   userName = '';
 
   login(role: string) {
     this.selectedRole.set(role);
-    this.namePrompt = true;
+    this.namePrompt.set(true);
   }
 
   submitLogin() {
     if (!this.userName.trim()) return;
 
-    this.api.login(this.selectedRole(), this.userName).subscribe({
-      next: (user) => {
-        this.auth.setUser(user);
-        this.router.navigate(['/vacancies']);
-      },
-      error: (err) => {
-        console.error('Login failed:', err);
-      }
-    });
+    const mockUser: User = {
+      id: 1,
+      name: this.userName.trim(),
+      role: this.selectedRole() as 'student' | 'company'
+    };
+    this.auth.setUser(mockUser);
+    this.router.navigate(['/vacancies']);
   }
 }
