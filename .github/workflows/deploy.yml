@@ -33,7 +33,7 @@ jobs:
         working-directory: frontend/job-portal
 
       - name: Build
-        run: npm run build
+        run: npm run build -- --base-href=/kazakh_project/
         working-directory: frontend/job-portal
 
       - name: Setup Pages
