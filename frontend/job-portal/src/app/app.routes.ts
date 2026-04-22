@@ -6,9 +6,10 @@ import { VacancyDetailComponent } from './components/vacancy-detail/vacancy-deta
 import { CvFormComponent } from './components/cv-form/cv-form.component';
 import { AboutComponent } from './components/about/about.component';
 import { WhyComponent } from './components/why/why.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/vacancies', pathMatch: 'full' },
+  { path: '', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'vacancies', component: VacanciesComponent },
   { path: 'vacancy-detail/:id', component: VacancyDetailComponent },
